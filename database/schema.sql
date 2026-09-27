@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS transactions (
   amount bigint NOT NULL CHECK (amount BETWEEN 1 AND 99999999999),
   type text NOT NULL CHECK (type IN ('expense','income')),
   category text NOT NULL CHECK (category IN ('Food & drinks','Shopping','Transport','Housing','Health','Entertainment','Travel','Education','Salary','Other')),
-  account text NOT NULL CHECK (account IN ('Debit card','Credit card','Bank','Cash','Other')),
+  account text NOT NULL CHECK (account IN ('Debit card','Credit card','UPI','Bank','Cash','Other')),
   date date NOT NULL,
   notes text NOT NULL DEFAULT '' CHECK (char_length(notes) <= 1000),
   created_at timestamptz NOT NULL DEFAULT now()

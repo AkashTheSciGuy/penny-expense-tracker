@@ -18,7 +18,7 @@ const categories = new Set([
   "Food & drinks", "Shopping", "Transport", "Housing", "Health",
   "Entertainment", "Travel", "Education", "Salary", "Other",
 ]);
-const accounts = new Set(["Debit card", "Credit card", "Bank", "Cash", "Other"]);
+const accounts = new Set(["Debit card", "Credit card","UPI", "Bank", "Cash", "Other"]);
 
 function json(data: unknown, status = 200, headers?: HeadersInit) {
   return Response.json(data, {

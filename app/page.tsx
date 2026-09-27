@@ -224,8 +224,8 @@ export default function Home() {
           },
           { signal: abort.signal },
         ),
-      ).catch(() => {});
-    } catch {}
+      ).catch(() => { });
+    } catch { }
     return () => abort.abort();
   }, [demo, user, busy, loading]);
   const selected = transactionsForMonth(rows, month);
@@ -1351,11 +1351,16 @@ export default function Home() {
                     name="account"
                     defaultValue={editing?.account || "Debit card"}
                   >
-                    {["Debit card", "Credit card", "Bank", "Cash", "Other"].map(
-                      (c) => (
-                        <option key={c}>{c}</option>
-                      ),
-                    )}
+                    {[
+                      "Debit card",
+                      "Credit card",
+                      "UPI",
+                      "Bank",
+                      "Cash",
+                      "Other",
+                    ].map((account) => (
+                      <option key={account}>{account}</option>
+                    ))}
                   </select>
                 </label>
                 <label className="field">
