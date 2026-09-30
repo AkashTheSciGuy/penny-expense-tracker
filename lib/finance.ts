@@ -16,6 +16,14 @@ export type Budget = {
   amount: number;
   month: string;
 };
+
+export type Category = {
+  id: string;
+  name: string;
+  isRecurring: boolean;
+  recurringAmount: number | null;
+};
+
 export const categories = [
   "Food & drinks",
   "Shopping",
@@ -48,11 +56,24 @@ export function money(value: number, currency = "USD") {
   }).format(value / 100);
 }
 export function cents(value: string) {
-  if (!/^\d{1,9}(\.\d{1,2})?$/.test(value))
-    throw new Error("Enter a positive amount with up to two decimal places.");
+  if (!/^\d{1,9}(\.\d{1,2})?$/.test(value)) {
+    throw new Error(
+      "Enter a positive amount with up to two decimal places.",
+    );
+  }
+
   const [whole, fraction = ""] = value.split(".");
-  const amount = Number(whole) * 100 + Number(fraction.padEnd(2, "0"));
-  if (amount <= 0) throw new Error("Amount must be greater than zero.");
+
+  const amount =
+    Number(whole) * 100 +
+    Number(fraction.padEnd(2, "0"));
+
+  if (amount <= 0) {
+    throw new Error(
+      "Amount must be greater than zero.",
+    );
+  }
+
   return amount;
 }
 export function totals(rows: Transaction[]) {
